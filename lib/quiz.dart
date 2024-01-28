@@ -37,9 +37,22 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = 'question-screen';
+    });
+  }
+
+  void backButton() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = 'start-screen';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-
     Widget screenWidget = StartScreen(switchScreen);
 
     if (activeScreen == 'question-screen') {
@@ -48,8 +61,10 @@ class _QuizState extends State<Quiz> {
       );
     }
     if (activeScreen == 'results-screen') {
-      screenWidget =  ResultsScreen(
+      screenWidget = ResultsScreen(
         chosenAnswers: selectedAnswers,
+        onRestart: restartQuiz,
+        onBack: backButton,
       );
     }
 

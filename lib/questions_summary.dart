@@ -15,7 +15,7 @@ class QuestionsSummary extends StatelessWidget {
         child: Column(
           children: summaryData.map(
             (data){
-              return summaryItem(data);
+              return SummaryItem(data);
             },
           ).toList(),
         ),
